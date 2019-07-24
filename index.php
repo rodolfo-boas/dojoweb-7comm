@@ -5,7 +5,7 @@
 <main>
   <div class="container">
     <div class="py-5 text-center">
-      <img class="d-block mx-auto mb-4" src="https://i.imgur.com/90e5Ph8.png" alt="Dojo 7COMm">
+      <img class="d-block mx-auto mb-4" src="https://digitalhousebr.tucampus.org/pluginfile.php/1/theme_moove/logo/1523386492/logo.png" alt="Dojo 7COMm">
     </div>
   </div>
 
@@ -21,21 +21,39 @@
               <th scope="col">Nome</th>
               <th scope="col">Telefone</th>
               <th scope="col">E-mail</th>
+              <th scope="col">E-mail</th>
             </tr>
           </thead>
           <tbody>
             <?php
               $res = BuscarDadosPessoas();
-              
+              $res1 = BuscarIndiceInteresses();
+              $res2 = BuscarTabelaInteresses();
+
+              foreach($res2 as $value){
+                $arrayId = $value['id'];
+                var_dump($arrayId);
+              }
+
+              foreach($res2 as $value){
+                $arrayTitulo = $value['titulo'];
+                var_dump($arrayTitulo);
+              }
+
               foreach($res as $value) {
                 echo '<tr>';
                 echo '<th scope="row">'.$value['nome'].'</th>';
                 echo      '<td>'.$value['telefone'].'</td>';
                 echo      '<td>'.$value['email'].'</td>';
-                echo      '<td>'.$value['interesses']
+              }
+              ?>
+              <?php
+
+              foreach($res1 as $value) {
+                echo      '<td>'.$value['interesse_id'].'</td>';
                 echo '</tr>';
               }
-            ?>
+              ?>
           </tbody>
         </table>
       </div>
